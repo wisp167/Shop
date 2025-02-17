@@ -16,7 +16,7 @@ import (
 )
 
 const (
-	numUsers           = 100
+	numUsers           = 1000
 	apiURL             = "http://localhost:8080/api"
 	amountconst        = 1000
 	numberofoperations = 10
