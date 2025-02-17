@@ -1,0 +1,16 @@
+root = "." # Watch the current directory
+tmp_dir = "tmp" # Temporary directory for air
+
+[build]
+cmd = "go build -o main ./internal/cmd" # Build command
+bin = "main" # Output binary name
+exclude_dir = ["node_modules", "vendor", ".git"] # Exclude directories (optional)
+log = "air_log.log" # Log file for air (optional)
+
+[build.vcs]
+disable = true # Explicitly disable VCS stamping
+
+[watch]
+# ... (you can customize what is watched)
+[watcher]
+exclude_files = [".git"]
