@@ -10,8 +10,8 @@ import (
 
 func TestLoadCoinTransferBetweenOddAndEvenUsers(t *testing.T) {
 	const (
-		numUsers       = 10 // Total number of users
-		numIterations  = 10 // Number of transfers per user
+		numUsers       = 1000 // Total number of users
+		numIterations  = 100 // Number of transfers per user
 		transferAmount = 1  // Amount to transfer each time
 	)
 
