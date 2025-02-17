@@ -6,6 +6,6 @@
 
 > Docker compose up
 
-Запуск тестов:
+Запуск тестов (65% coverage):
 
 > Docker compose up test
