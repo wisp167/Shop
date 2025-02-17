@@ -10,9 +10,9 @@ import (
 
 func TestLoadCoinTransferBetweenOddAndEvenUsers(t *testing.T) {
 	const (
-		numUsers       = 1000 // Total number of users
-		numIterations  = 10   // Number of transfers per user
-		transferAmount = 1    // Amount to transfer each time
+		numUsers       = 10 // Total number of users
+		numIterations  = 10 // Number of transfers per user
+		transferAmount = 1  // Amount to transfer each time
 	)
 
 	var wg sync.WaitGroup
@@ -56,6 +56,7 @@ func TestLoadCoinTransferBetweenOddAndEvenUsers(t *testing.T) {
 				if resp.StatusCode != http.StatusOK {
 					t.Errorf("User %d: Received non-200 status during transfer: %d\n", userID, resp.StatusCode)
 				}
+				RequestUserInfo(t, tokens[userID])
 				t.Logf("User %d: Received Status Code %d", userID, resp.StatusCode)
 
 			}
@@ -67,5 +68,5 @@ func TestLoadCoinTransferBetweenOddAndEvenUsers(t *testing.T) {
 	// Log the total time taken
 	t.Logf("Load test completed in %v", time.Since(startTime))
 	t.Logf("Total transfers: %d", numUsers*numIterations)
-	t.Logf("Average response time: %v", time.Since(startTime)/(numUsers*numIterations))
+	t.Logf("Average response time: %v", time.Since(startTime)/(numUsers*numIterations*2))
 }

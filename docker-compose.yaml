@@ -2,7 +2,9 @@ version: '3.8'
 
 services:
   avito-shop-service:
-      build: .
+      build:
+        context: .
+        target: runner
       container_name: avito-shop-service
       ports:
         - "8080:8080"
@@ -15,8 +17,8 @@ services:
         - DATABASE_HOST=db
         # порт сервиса
         - SERVER_PORT=8080
-      volumes:
-        - .:/app
+          # volumes:
+          # - .:/app/src
       depends_on:
         db:
             condition: service_healthy
@@ -45,6 +47,25 @@ services:
       start_period: 10s
     networks:
       - internal
+
+  test:
+    build:
+      context: .
+      target: builder
+    container_name: avito-shop-test
+    environment:
+      - DATABASE_PORT=5432
+      - DATABASE_USER=postgres
+      - DATABASE_PASSWORD=password
+      - DATABASE_NAME=shop
+      - DATABASE_HOST=db
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - internal
+    command: go test -v ./tests -count=1 -coverpkg=./... -coverprofile=coverage.out
+
 networks:
   internal:
 

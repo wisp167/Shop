@@ -1,2 +1,6 @@
 tmp/
 .air.toml
+combined.txt
+.gitignore
+coverage.out
+
