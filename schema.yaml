@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: API Avito shop
+  title: Shop
   version: 1.0.0
 
 servers:
